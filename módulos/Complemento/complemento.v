@@ -3,7 +3,7 @@ module complemento #(
 ) (data, enable, result,done_complemento);
 
 input [inputsize-1:0] data
-input enable;
+; input enable;
 output reg [inputsize-1:0] result;
 output  reg  done_complemento ;
 reg [3:0] A;
