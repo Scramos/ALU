@@ -1,6 +1,6 @@
 module compn#(
     parameter inputsize = 4
-)( data_in, clk, enable, ab_out,done_compn);
+)( data_in, enable, ab_out,done_compn);
 
 input enable;
 input [7:0] data_in;
