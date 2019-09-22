@@ -1,6 +1,6 @@
 module compc #(
     parameter inputsize = 4
-)( data_in, clk, enable, ab_out,done_compc);
+)( data_in, enable, ab_out,done_compc);
 
 input enable;
 input [7:0] data_in;
