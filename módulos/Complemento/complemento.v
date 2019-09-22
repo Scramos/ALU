@@ -1,6 +1,7 @@
 module complemento #(
     parameter inputsize = 4
-) (data, enable, result,done_complemento);
+) (data, enable, result,done_complemento); 
+
 
 input [inputsize-1:0] data
 ; input enable;
