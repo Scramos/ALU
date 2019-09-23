@@ -1,4 +1,4 @@
-module mux_ALU( done,opcode,sol_suma, sol_complemento,sol_shift_R,sol_shift_l,sol_load,sol_compc,sol_compn,final_result
+module mux_ALU(opcode,sol_suma, sol_complemento,sol_shift_R,sol_shift_l,sol_load,sol_compc,sol_compn,final_result
     );
     input [3:0] sol_suma;
     input [3:0] sol_shift_R;
@@ -9,7 +9,7 @@ module mux_ALU( done,opcode,sol_suma, sol_complemento,sol_shift_R,sol_shift_l,so
     input [3:0] sol_compn;
     output reg  [3:0] final_result;
     input  [2:0] opcode;
-    output done;
+    output ;
 
     always @(*) begin
 
