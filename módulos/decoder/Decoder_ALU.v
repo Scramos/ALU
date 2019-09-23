@@ -1,39 +1,20 @@
-module Decoder_ALU( clk,address, suma,complemento, shift_R, shift_l,compC,compn,load,save
-    
-);
+module decoder_ALU( clk, address, general_output);
+
 input clk;
 input [2:0] address;
-output reg [1:0] suma;
-output reg [1:0] complemento;
-output reg [1:0] shift_R;
-output reg [1:0] shift_l;
-output reg [1:0] compC;
-output reg [1:0] compn;
-output reg [1:0]load;
-output reg [1:0]save;
+output reg [0:7] general_output;
+
 always @ (posedge clk) begin
     case (address)
-        3'h0 : suma = 1'b1;
-        3'h1 : complemento= 1'b1;
-        3'h2 : shift_R = 1'b1;
-        3'h3 : shift_l= 1'b1;
-        3'h4 : compC = 1'b1;
-        3'h5 : compn = 1'b1;
-        3'h6 : save= 1'b1;
-        3'h7 : load = 1'b1;
-        default: 
+        3'h0 : general_output <= 8'b00000000;
+        3'h1 : general_output <= 8'b00000001;
+        3'h2 : general_output <= 8'b00000010;
+        3'h3 : general_output <= 8'b00000100;
+        3'h4 : general_output <= 8'b00001000;
+        3'h5 : general_output <= 8'b00010000;
+        3'h6 : general_output <= 8'b00100000;
+        3'h7 : general_output <= 8'b01000000;
     endcase
 end
-always @(negedge clk) begin
-    suma <= 1'b0;
-    complemento= 1'b0;
-    shift_R = 1'b0;
-    shift_l= 1'b0;
-    compC = 1'b0;
-    compn = 1'b0;
-    save= 1'b0;
-    load = 1'b0;
 
-    
-end
 endmodule // Decoder_ALU
