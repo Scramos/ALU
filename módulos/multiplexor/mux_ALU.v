@@ -8,7 +8,7 @@ module mux_ALU(opcode,sol_suma, sol_complemento,sol_shift_R,sol_shift_l,sol_load
     input [3:0] sol_compc;
     input [3:0] sol_compn;
     output reg  [3:0] final_result;
-    input  [2:0] opcode;
+    input  [2:0] opcode [2:0];
     output ;
 
     always @(*) begin
