@@ -4,7 +4,7 @@ data_shiftR,data_load
 );
 input done_compc,done_complemento,done_compn,done_load,done_shiftR,done_shiftl,done_suma;
 input [7:0] data_in;
-input opcode;
+input [2:0] opcode;
 output wr,rd;
 output reg done;
 output reg [7:0] data_compc;
