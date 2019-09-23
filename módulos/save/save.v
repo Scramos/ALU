@@ -1,4 +1,4 @@
-module save(done,pos_save,data_result,save,active,data_AB,data_outA,data_outB
+module save(done,pos_save,data_result,active,data_AB,data_outA,data_outB
 );
 input pos_save,active,done;
 input [7:0] data_AB;
