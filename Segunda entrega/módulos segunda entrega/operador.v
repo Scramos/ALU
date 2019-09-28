@@ -13,6 +13,7 @@ reg [3:0] dato_outsr;
 reg [3:0] dato_outscmi;
 reg [3:0] dato_outcmm;
 reg [3:0] dato_outlo;
+reg [3:0] dato_outsa;
 output [3:0] dato_mux;
 always @(clk) begin
 
