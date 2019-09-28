@@ -1,16 +1,16 @@
-module (instr,dato_A,dato_B,dato_out,clk,dato_mux)
+module (instr,dato_A,dato_B,dato_outsum,clk,dato_mux)
 
 input [7:0] instr;
 reg [3:0] A;
 reg [3:0] B;
-output [3:0] dato_out;
+output [3:0] dato_outsum;
 always @(clk) begin
 
 	case (instr [7:5])
 	3'h0 : begin
 		A <= instr[3:0];
  		B <= instr[3:0]; 
-		dato_out <= A+B;
+		dato_outsum <= A+B;
 
 		end 
 	3'h1:  begin
