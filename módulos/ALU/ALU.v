@@ -1,6 +1,6 @@
 module ALU(datos,opcode,registro,posicion,clk    
 );
-input clk;
+input clk; //comentario
 input [7:0] datos;
 input [2:0] opcode;
 input [2:0] registro;
