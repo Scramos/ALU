@@ -1,5 +1,6 @@
 module (instr,dato_A,dato_B,dato_outsum,dato_outcomp,dato_outsl,dato_outsr,dato_outcmi,dato_outcmm, dato_outlo,clk,dato_mux)
 
+input clk;
 input [7:0] instr;
 reg [3:0] A;
 reg [3:0] B;
