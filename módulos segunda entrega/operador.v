@@ -44,8 +44,8 @@ always @(clk) begin
 
 		end
 	3'h5 :  begin
-		data_out <= instr[3:0];
-
+		
+		
 		end
 
 	3'h7 :  begin 
