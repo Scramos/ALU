@@ -12,8 +12,8 @@ reg [3:0] dato_outsl;
 reg [3:0] dato_outsr;
 reg [3:0] dato_outscmi;
 reg [3:0] dato_outcmm;
-reg [3:0] dato_outlo;
 reg [3:0] dato_outsa;
+output [3:0] dato_outlo;
 output [3:0] dato_mux;
 always @(clk) begin
 
@@ -75,6 +75,6 @@ always @(clk) begin
 	3'h4: data_mux <= data_outcmi;
 	3'h5: data_mux <= data_outcmm;
 	//3'h6: data_mux <= data_out;
-	3'h7: data_mux <= data_outlo;
+	//3'h7: data_mux <= data_outlo;
 	endcase
 endmodule 
