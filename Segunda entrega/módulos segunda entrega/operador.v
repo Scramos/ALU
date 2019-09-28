@@ -1,4 +1,4 @@
-module (instr,A,B,clk,dato_mux)
+module operador(instr,A,B,clk,dato_mux)
 
 input clk;
 input [7:0] instr;
