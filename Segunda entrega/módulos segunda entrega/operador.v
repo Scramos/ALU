@@ -10,7 +10,7 @@ reg [3:0] dato_outsum;
 reg [3:0] dato_outcomp;
 reg [3:0] dato_outsl;
 reg [3:0] dato_outsr;
-reg [3:0] dato_outscmi;
+reg [3:0] dato_outcmi;
 reg [3:0] dato_outcmm;
 reg [3:0] dato_outsa;
 output [3:0] dato_outlo;
@@ -41,23 +41,23 @@ always @(clk) begin
         	if (dato1 == dato2) begin //Realiza la comparación de igualdad entre A y B   	
  		dato_outcmi <= 1; //Envía un 1 dado que la comparación es cierta
         	end else begin
-        	dato_out <= 0; //Envía un cero cuando la comparación es falsa
-		end
+        	dato_outcmi <= 0; //Envía un cero cuando la comparación es falsa
+		end end
 	3'h5 :  begin
 		dato1 <= A; // Guarda el dato en el registro A
 		dato2 <= B; // Guarda el dato en el registro B
 		if (dato1 > dato2) begin // Realiza la comparación de mayoría entre A y B
 		dato_outcmm <= 1; // Envía uno si A es mayor a B
 		end else begin
-		dato_out <= 0; // Envía cero en caso contrario
-		end
+		dato_outcmm <= 0; // Envía cero en caso contrario
+		end end
 	3'h6 :  begin
 		dato_outsa <= A; // Guarda el dato en el registro A
 		
 		end
 
 	3'h7 :  begin 
-		data_outlo <= A; // Guarda el dato en el registro A
+		dato_outlo <= A; // Guarda el dato en el registro A
 
 		end
 	endcase
@@ -68,12 +68,12 @@ end
 always @(clk) begin
 
 	case (instr[7:5]) 
-	3'h0: data_mux <= data_outsum; 
-	3'h1: data_mux <= data_outcomp;
-	3'h2: data_mux <= data_outsl;
-	3'h3: data_mux <= data_outsr;
-	3'h4: data_mux <= data_outcmi;
-	3'h5: data_mux <= data_outcmm;
+	3'h0: dato_mux <= dato_outsum; 
+	3'h1: dato_mux <= dato_outcomp;
+	3'h2: dato_mux <= dato_outsl;
+	3'h3: dato_mux <= dato_outsr;
+	3'h4: dato_mux <= dato_outcmi;
+	3'h5: dato_mux <= dato_outcmm;
 	//3'h6: data_mux <= data_out;
 	//3'h7: data_mux <= data_outlo;
 	endcase
