@@ -1,4 +1,4 @@
-module operador(instr,A,B,clk,dato_mux)
+module operador(instr,A,B,clk,dato_mux, data_outlo);
 
 input clk;
 input [7:0] instr;
@@ -33,7 +33,7 @@ always @(clk) begin
 		end
 	3'h3 :  begin
 		dato1 <= A; // Guarda el dato en el registro A
-		dato_outsr <= {1'b0; dato1[3:1]}; // Toma desde el bit menos significativo tres datos y los concatena con un cero en el posición más significativa. 
+		dato_outsr <= {1'b0, dato1[3:1]}; // Toma desde el bit menos significativo tres datos y los concatena con un cero en el posición más significativa. 
 		end
 	3'h4 :  begin
 		dato1 <= A; // Guarda el dato en el registro A
@@ -52,7 +52,7 @@ always @(clk) begin
 		dato_out <= 0; // Envía cero en caso contrario
 		end
 	3'h6 :  begin
-		dato_outsa <= A // Guarda el dato en el registro A
+		dato_outsa <= A; // Guarda el dato en el registro A
 		
 		end
 
@@ -77,4 +77,5 @@ always @(clk) begin
 	//3'h6: data_mux <= data_out;
 	//3'h7: data_mux <= data_outlo;
 	endcase
+end
 endmodule 
