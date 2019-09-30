@@ -25,7 +25,7 @@ always @(posedge clk) begin
 		end 
 	3'h1:  begin
 		dato1 <= A; // Guarda el dato en el registro A
-		dato_outcomp <= dato1; //Hace el complemento y lo guarda en dato_outcomp
+		dato_outcomp <= ~dato1; //Hace el complemento y lo guarda en dato_outcomp
 		end
 	3'h2 : begin
 		dato1 <= A; // Guarda el dato en el registro A
