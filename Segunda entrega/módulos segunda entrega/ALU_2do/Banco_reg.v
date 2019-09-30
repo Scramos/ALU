@@ -25,9 +25,9 @@ end
 
 always @(posedge clk) begin
 if (init == 1) begin
-      case (instr[7:5])      // decodificacion de la instruccion y envia el dato
-        3'h0 : begin
-            posicion <= instr[4];
+    case (instr[7:5])             // decodificacion de la instruccion y envia el dato
+          3'h0 : begin            //dependiendo de la decodificación, define unas posiciones
+            posicion <= instr[4]; //que luego se enviarán a las respectivas salidas 
             pos_A <= instr[3];
             pos_B <= instr[2];  
         end
@@ -62,19 +62,19 @@ if (init == 1) begin
         end
 
     endcase  
-     data_A <= memory[pos_A];
+    data_A <= memory[pos_A]; //se asigna a cada salida su respectiva posición
     data_B <= memory[pos_B];
 end
 end
 
 always @(posedge clk ) begin
 done <= 1'b0;
-if (reset == 1) begin
+     if (reset == 1) begin    //reset de los registros
      memory[0] <= 4'b0000;
      memory[1] <= 4'b0000;
 end 
-if (rd == 1) begin
-   memory[posicion] <= data_result;
+   if (rd == 1) begin                 //si se activa la lectura, el resultado se guardará en la
+   memory[posicion] <= data_result;   //en la respectiva posición 
    done <= 1'b1;
 
 end // Escribe resultado    
