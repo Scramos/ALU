@@ -1,9 +1,11 @@
-module Operaciones(instr,A,B,clk,dato_mux, data_outlo,rd) , 
+module Operaciones(instr,A,B,clk,dato_mux, data_outlo,rd, init,done) , 
 
 input clk;
 input [7:0] instr;
 input [3:0] A;
 input [3:0] B;
+input rd;
+input init;
 reg [3:0] dato1;
 reg [3:0] dato2;
 reg [3:0] dato_outsum;
@@ -13,10 +15,12 @@ reg [3:0] dato_outsr;
 reg [3:0] dato_outcmi;
 reg [3:0] dato_outcmm;
 reg [3:0] dato_outsa;
-output [3:0] dato_outlo;
+output [3:0] data_outlo;
 output reg [3:0] dato_mux;
-output reg rd = 0;
+output reg done ;
+
 always @(posedge clk) begin
+if (init == 1) begin
 	case (instr [7:5])
 	3'h0 : begin // suma
 		dato1 <= A; // Guarda el dato en el registro A
@@ -25,7 +29,7 @@ always @(posedge clk) begin
 		end 
 	3'h1:  begin //complemento
 		dato1 <= A; // Guarda el dato en el registro A
-		dato_outcomp <= ~dato1; //Hace el complemento y lo guarda en dato_outcomp
+		dato_outcomp <= dato1; //Hace el complemento y lo guarda en dato_outcomp
 		end
 	3'h2 : begin //
 		dato1 <= A; // Guarda el dato en el registro A
@@ -67,22 +71,23 @@ always @(posedge clk) begin
 
 		end
 	endcase
-
-
-
+	done <= 1'b1;
 end
-always @(negedge clk) begin
-
-	case (instr[7:5]) 
-	3'h0 :  begin dato_mux <= dato_outsum; rd <= 1'b1;  end
-	3'h1 :  begin dato_mux <= dato_outcomp; rd <= 1'b1; end
-	3'h2 :  begin dato_mux <= dato_outsl; rd <= 1'b1; end
-	3'h3 :  begin dato_mux <= dato_outsr; rd <= 1'b1;  end
-	3'h4 :  begin dato_mux <= dato_outcmi; rd <= 1'b1; end
-	3'h5 :  begin dato_mux <= dato_outcmm; rd <= 1'b1; end
-	3'h6 :  begin data_mux <= dato_outsa; rd <= 1'b1;  end
-	3'h7 :  rd <= 1'b0 ;
-	endcase
+end
+always @(posedge clk) begin
+if (rd == 1) begin
+		case (instr[7:5]) 
+		3'h0 :  begin dato_mux <= dato_outsum; ;  end
+		3'h1 :  begin dato_mux <= dato_outcomp; end
+		3'h2 :  begin dato_mux <= dato_outsl;  end
+		3'h3 :  begin dato_mux <= dato_outsr;   end
+		3'h4 :  begin dato_mux <= dato_outcmi; end
+		3'h5 :  begin dato_mux <= dato_outcmm; end
+		3'h6 :  begin data_mux <= dato_outsa;   end
+		// 3'h7 :  rd <= 1'b0 ;
+		endcase
+		done <= 1'b0;
+	end
 
 end
 endmodule  // Operaciones #()
