@@ -1,4 +1,4 @@
-module operador(instr,A,B,clk,dato_mux, data_outlo);
+module Operaciones(instr,A,B,clk,dato_mux, data_outlo,rd) , 
 
 input clk;
 input [7:0] instr;
@@ -15,19 +15,19 @@ reg [3:0] dato_outcmm;
 reg [3:0] dato_outsa;
 output [3:0] dato_outlo;
 output reg [3:0] dato_mux;
+output reg rd = 0;
 always @(posedge clk) begin
-
 	case (instr [7:5])
-	3'h0 : begin
+	3'h0 : begin // suma
 		dato1 <= A; // Guarda el dato en el registro A
  		dato2 <= B; // Guarda el dato en el registro B
 		dato_outsum <= dato1+dato2; // Realiza la suma de A y B y lo guarda en dato_outsum
 		end 
-	3'h1:  begin
+	3'h1:  begin //complemento
 		dato1 <= A; // Guarda el dato en el registro A
 		dato_outcomp <= ~dato1; //Hace el complemento y lo guarda en dato_outcomp
 		end
-	3'h2 : begin
+	3'h2 : begin //
 		dato1 <= A; // Guarda el dato en el registro A
 		dato_outsl <= {dato1[2:0], 1'b0}; // Toma desde el bit más significativo tres datos y luego lo concatena con un cero en la posición menos significativa y lo guarda.
 		end
@@ -58,7 +58,7 @@ always @(posedge clk) begin
 	end
 	
 	3'h6 :  begin
-		dato_outsa <= A; // Guarda el dato en el registro A
+		dato_outsa <=  instr[3:0]; // Guarda tomado direcatamente de la instruccion
 		
 		end
 
@@ -71,17 +71,18 @@ always @(posedge clk) begin
 
 
 end
-always @(posedge clk) begin
+always @(negedge clk) begin
 
 	case (instr[7:5]) 
-	3'h0: dato_mux <= dato_outsum; 
-	3'h1: dato_mux <= dato_outcomp;
-	3'h2: dato_mux <= dato_outsl;
-	3'h3: dato_mux <= dato_outsr;
-	3'h4: dato_mux <= dato_outcmi;
-	3'h5: dato_mux <= dato_outcmm;
-	//3'h6: data_mux <= data_out;
-	//3'h7: data_mux <= data_outlo;
+	3'h0 :  begin dato_mux <= dato_outsum; rd <= 1'b1;  end
+	3'h1 :  begin dato_mux <= dato_outcomp; rd <= 1'b1; end
+	3'h2 :  begin dato_mux <= dato_outsl; rd <= 1'b1; end
+	3'h3 :  begin dato_mux <= dato_outsr; rd <= 1'b1;  end
+	3'h4 :  begin dato_mux <= dato_outcmi; rd <= 1'b1; end
+	3'h5 :  begin dato_mux <= dato_outcmm; rd <= 1'b1; end
+	3'h6 :  begin data_mux <= dato_outsa; rd <= 1'b1;  end
+	3'h7 :  rd <= 1'b0 ;
 	endcase
+
 end
-endmodule 
+endmodule  // Operaciones #()
