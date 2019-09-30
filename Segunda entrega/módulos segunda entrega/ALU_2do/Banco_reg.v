@@ -1,20 +1,23 @@
 module Banco_reg #(parameter Tamdata = 4, Tamrow = 2)
 (clk,reset, instr, data_result, data_A , data_B,rd , done, init);
+    
 input clk;
 input reset;
 input [7:0] instr;
 input [3:0] data_result;
 input rd;
 input init;
-reg [Tamdata-1:0] memory [Tamrow-1:0] ;
+
 output reg [3:0] data_A;
 output reg [3:0] data_B;
 output reg done ;
 
-
+reg [Tamdata-1:0] memory [Tamrow-1:0] ;
+    
 reg posicion ;
 reg pos_A;
 reg pos_B;
+    
 initial begin
     memory [0] = 4'b0000;
     memory [1] = 4'b0000;
