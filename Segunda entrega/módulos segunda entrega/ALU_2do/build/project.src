@@ -1,0 +1,4 @@
+verilog work ../ALU.v
+verilog work ../Banco_reg.v
+verilog work ../Controlador.v
+verilog work ../Operaciones.v

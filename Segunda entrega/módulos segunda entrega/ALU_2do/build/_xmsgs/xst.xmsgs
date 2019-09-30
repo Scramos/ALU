@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="HDLCompiler" num="25" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/ALU.v" Line 33: Module &lt;<arg fmt="%s" index="1">Operaciones</arg>&gt; does not have a port named &lt;<arg fmt="%s" index="2">data_outlo</arg>&gt;.
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1016" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/ALU.v" Line 32: Port <arg fmt="%s" index="1">dato_outlo</arg> is not connected to this instance
+</msg>
+
+<msg type="error" file="HDLCompiler" num="1401" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/Operaciones.v" Line 22: Signal <arg fmt="%s" index="1">done</arg> in unit <arg fmt="%s" index="2">Operaciones</arg> is connected to following multiple drivers:
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1499" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/Operaciones.v" Line 1: Empty module &lt;<arg fmt="%s" index="1">Operaciones</arg>&gt; remains a black box.
+</msg>
+
+<msg type="error" file="HDLCompiler" num="267" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/ALU.v" Line 33: Cannot find port <arg fmt="%s" index="1">data_outlo</arg> on this module
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1499" delta="new" >"/home/sebas/Documentos/git_workspace/alu/ALU/Segunda entrega/módulos segunda entrega/ALU_2do/ALU.v" Line 1: Empty module &lt;<arg fmt="%s" index="1">ALU</arg>&gt; remains a black box.
+</msg>
+
+</messages>
+
