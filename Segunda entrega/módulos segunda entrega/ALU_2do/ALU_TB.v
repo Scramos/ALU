@@ -14,15 +14,17 @@ sys_clk_i = 0;
 sys_rst_i = 0;
 init =0;
 #10
-
 sys_rst_i = 1;
-#100
-
+#10
 sys_rst_i = 0;
-init = 1;
-#200
-
-init = 0;
+#10;
+active = 1;
+instrucciones = 8'b11000011;
+#10;
+instrucciones = 8'b11010011;
+#10;
+instrucciones = 8'b00001000;
+#10;
 
 end
 
