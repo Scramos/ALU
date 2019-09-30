@@ -4,6 +4,10 @@ input clk;
 input [7:0] instr;
 input [3:0] A;
 input [3:0] B;
+	
+output [3:0] dato_outlo;
+output reg [3:0] dato_mux;
+	
 reg [3:0] dato1;
 reg [3:0] dato2;
 reg [3:0] dato_outsum;
@@ -13,8 +17,7 @@ reg [3:0] dato_outsr;
 reg [3:0] dato_outcmi;
 reg [3:0] dato_outcmm;
 reg [3:0] dato_outsa;
-output [3:0] dato_outlo;
-output reg [3:0] dato_mux;
+
 always @(posedge clk) begin
 
 	case (instr [7:5])
